@@ -1,0 +1,11 @@
+#lang racket
+
+(define keep-first-n 
+  (lambda (L)
+  
+  (cond ((x > length L ) Sorry your number is bigger than the length of the list try a smaller interger)
+        ((x < 1 ) Sorry, please enter a positive interger)
+        (else Yes))))
+  
+
+(keep-first-n '(a b c d e f g h i))

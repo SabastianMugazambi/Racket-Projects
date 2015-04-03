@@ -1,0 +1,6 @@
+#lang racket
+;;By Sabastian Mugazambi
+
+(car (cdr (cdr '(apple orange pear grapefruit))))
+(car (car (cdr (cdr '((apple) (orange) (pear) (grapefruit))))))
+(car (car (car (cdr (cdr '(apple (orange) ((pear)) (((grapefruit)))))))))
