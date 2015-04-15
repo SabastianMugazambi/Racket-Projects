@@ -19,24 +19,25 @@
             (if (equal? #t (pair-sum (cdr lst) v)) #t
                 (equal? (+ (car lst) (car(cdr lst))) v)))))  
                                              
-(pair-sum (gen-list 1 100) 1000)
+(pair-sum (gen-list 1 100) 199)
 
-;;lazy gen-sum
+;;@Function: An alternative to generating the entire list of numbers which instead produce a lazy list
 (define gen-lazy-list
   (lambda (start stop)
     (if (> start stop)
         #f
         (cons start
             (lambda () (gen-lazy-list (+ start 1) stop))))))
+
 (gen-lazy-list 1 2)
 
-;;@Function generates lazy list
+;;@Function takes the outout of the gen-lazy-list and  
 (define pair-sum-lazy 
   (lambda (lst v)
-    (if (equal? #f (cdr lst))
-        (car lst)
-         (if (equal? (+ (car lst) (pair-sum-lazy (cdr lst) v)) v) #t
-             #f))))
+    (if (equal? #f  ((cdr lst)))
+        #f
+         (if (equal? (+ (car lst) (car((cdr lst)))) v) #t
+             (pair-sum-lazy ((cdr lst)) v)))))
 
-(pair-sum-lazy (gen-lazy-list 1 2) 3)
+(pair-sum-lazy (gen-lazy-list 1 100) 1000)
 
